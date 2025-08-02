@@ -1,4 +1,4 @@
-import java.util.Properties  // ✅ добавляем импорт сверху
+import java.util.Properties
 import java.io.FileInputStream
 
 plugins {
@@ -17,7 +17,7 @@ android {
         minSdk = 21
         targetSdk = 34
 
-        // === FIX: загрузка versionCode и versionName ===
+        // Загружаем versionCode и versionName из local.properties
         val localProperties = Properties()
         val localPropertiesFile = rootProject.file("local.properties")
         if (localPropertiesFile.exists()) {
@@ -32,6 +32,12 @@ android {
         release {
             signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = false
+            shrinkResources = false   // ✅ отключаем, чтобы билд не падал
+        }
+        debug {
+            signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = false
+            shrinkResources = false   // ✅ обязательно для Codemagic
         }
     }
 
