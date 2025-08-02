@@ -32,12 +32,12 @@ android {
         release {
             signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = false
-            shrinkResources = false   // ✅ отключаем, чтобы билд не падал
+            isShrinkResources = false   // ✅ правильное свойство в .kts
         }
         debug {
             signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = false
-            shrinkResources = false   // ✅ обязательно для Codemagic
+            isShrinkResources = false   // ✅ правильное свойство в .kts
         }
     }
 
