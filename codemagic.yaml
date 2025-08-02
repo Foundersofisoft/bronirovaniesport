@@ -7,8 +7,10 @@ workflows:
       android:
         ndk: 27.0.12077973
     scripts:
-      - name: Get dependencies
-        script: flutter pub get
+      - name: Clean & Get dependencies
+        script: |
+          flutter clean
+          flutter pub get
       - name: Build release APK
         script: flutter build apk --release
     artifacts:
