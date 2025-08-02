@@ -1,3 +1,6 @@
+import java.util.Properties  // ✅ добавляем импорт сверху
+import java.io.FileInputStream
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -14,11 +17,11 @@ android {
         minSdk = 21
         targetSdk = 34
 
-        // === FIX: flutterVersionCode / flutterVersionName ===
-        val localProperties = java.util.Properties()
+        // === FIX: загрузка versionCode и versionName ===
+        val localProperties = Properties()
         val localPropertiesFile = rootProject.file("local.properties")
         if (localPropertiesFile.exists()) {
-            localPropertiesFile.inputStream().use { localProperties.load(it) }
+            FileInputStream(localPropertiesFile).use { localProperties.load(it) }
         }
 
         versionCode = localProperties.getProperty("flutter.versionCode")?.toInt() ?: 1
@@ -27,7 +30,6 @@ android {
 
     buildTypes {
         release {
-            // Пока debug key, потом заменишь своим release.jks
             signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = false
         }
