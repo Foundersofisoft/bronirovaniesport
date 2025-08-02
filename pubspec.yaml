@@ -1,0 +1,26 @@
+name: zhaiyana
+description: A Flutter project for sports field booking and management
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  supabase_flutter: ^1.10.0
+  table_calendar: ^3.0.9
+  share_plus: ^7.0.0
+  uni_links: ^0.5.1
+  intl: ^0.18.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
