@@ -13,13 +13,32 @@ android {
         applicationId = "com.example.zhaiyana"
         minSdk = 21
         targetSdk = 34
-        versionCode = flutterVersionCode.toInt()
-        versionName = flutterVersionName
+
+        // === FIX: flutterVersionCode / flutterVersionName ===
+        val localProperties = java.util.Properties()
+        val localPropertiesFile = rootProject.file("local.properties")
+        if (localPropertiesFile.exists()) {
+            localPropertiesFile.inputStream().use { localProperties.load(it) }
+        }
+
+        versionCode = localProperties.getProperty("flutter.versionCode")?.toInt() ?: 1
+        versionName = localProperties.getProperty("flutter.versionName") ?: "1.0.0"
     }
 
     buildTypes {
         release {
+            // Пока debug key, потом заменишь своим release.jks
             signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = false
         }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
     }
 }
