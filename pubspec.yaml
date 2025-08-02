@@ -11,14 +11,19 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  supabase_flutter: ^1.10.25
+
+  # Core
+  supabase_flutter: ^2.9.1
+  intl: ^0.20.2
+  uuid: ^4.5.1
+
+  # UI & Features
   table_calendar: ^3.0.9
-  share_plus: ^7.2.2
-  app_links: ^3.4.0        # ✅ заменили устаревший uni_links
-  intl: ^0.20.2            # ✅ версия совместимая с SDK
+  share_plus: ^11.0.0
+  app_links: ^3.4.0
   url_launcher: ^6.3.2
   webview_flutter: ^4.13.0
-  uuid: ^4.5.1
+  sign_in_with_apple: ^7.0.1
 
 dev_dependencies:
   flutter_test:
